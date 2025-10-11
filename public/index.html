@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Media Whiteboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="toolbar">
+    <div class="branding">
+      <h1>Media Whiteboard</h1>
+      <p>Organise visual assets for your film and media projects.</p>
+    </div>
+    <div class="controls">
+      <label class="toggle">
+        <input type="checkbox" id="renameToggle" />
+        <span class="slider"></span>
+        <span class="label">Rename on drop</span>
+      </label>
+      <button id="addTextBtn" class="action">Add Text</button>
+      <div class="asset-selector">
+        <label for="assetSelect">Assets</label>
+        <select id="assetSelect" multiple></select>
+        <button id="downloadSelected" class="action">Download Selected</button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section id="dropInfo">
+      <p>Drag and drop images, videos, or other files anywhere onto the canvas.</p>
+    </section>
+    <section id="workspaceContainer">
+      <div id="workspace"></div>
+    </section>
+  </main>
+  <template id="assetTemplate">
+    <div class="asset" tabindex="0">
+      <div class="asset-header">
+        <span class="asset-title"></span>
+      </div>
+      <div class="asset-body"></div>
+    </div>
+  </template>
+  <script src="app.js" type="module"></script>
+</body>
+</html>
