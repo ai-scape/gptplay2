@@ -58,6 +58,54 @@ app.get('/api/assets', (_req, res) => {
   res.json({ assets });
 });
 
+app.patch('/api/assets/:id', (req, res) => {
+  const { id } = req.params;
+  const renameValue = (req.body.displayName || '').trim();
+
+  if (!renameValue) {
+    return res.status(400).json({ error: 'A new display name is required.' });
+  }
+
+  const asset = assets.find(item => item.id === id);
+
+  if (!asset) {
+    return res.status(404).json({ error: 'Asset not found.' });
+  }
+
+  const renameHasExtension = path.extname(renameValue);
+  const originalExtension = path.extname(asset.originalName) || path.extname(asset.storedName) || '';
+  const updatedName = renameHasExtension ? renameValue : `${renameValue}${originalExtension}`;
+
+  asset.displayName = updatedName;
+  saveAssets(assets);
+
+  res.json({ asset });
+});
+
+app.delete('/api/assets/:id', (req, res) => {
+  const { id } = req.params;
+  const index = assets.findIndex(item => item.id === id);
+
+  if (index === -1) {
+    return res.status(404).json({ error: 'Asset not found.' });
+  }
+
+  const [asset] = assets.splice(index, 1);
+  saveAssets(assets);
+
+  const filePath = path.join(UPLOAD_DIR, asset.storedName);
+
+  try {
+    if (fs.existsSync(filePath)) {
+      fs.unlinkSync(filePath);
+    }
+  } catch (error) {
+    console.error(`Failed to remove stored file for asset ${asset.id}`, error);
+  }
+
+  res.json({ asset });
+});
+
 app.post('/api/upload', upload.array('files'), (req, res) => {
   let renames = req.body.renames || [];
   if (!Array.isArray(renames)) {
