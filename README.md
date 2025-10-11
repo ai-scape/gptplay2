@@ -9,10 +9,7 @@ A lightweight whiteboard for organising video, image and other reference assets 
 - Files stored on the server in the `uploads` directory with metadata saved for downloads.
 - Video playback and image preview cards rendered directly on the canvas.
 - Text note tool for quick annotations.
-- Inline controls to resize, manually rename, or remove any asset after it has been placed.
-- Canvas-driven selection: click to focus an asset, shift-click or marquee drag to build multi-select groups, and download them with one action.
-- Canvas navigation inspired by creative whiteboards: hold <kbd>Space</kbd> to pan, use zoom controls, and reset to re-center.
-- Download the current selection as either individual files or an automatic ZIP when multiple assets are highlighted.
+- Multi-select download box that returns either the renamed file or a zipped archive.
 
 ## Getting started
 
@@ -61,9 +58,6 @@ Visit `http://localhost:3000` in your browser. The first load will create an `up
 ## Usage tips
 
 - Toggle **Rename on drop** if you want the browser to prompt for a new filename every time you drop an asset onto the canvas. The tool keeps the original extension automatically.
-- Drag files (images, videos, or other documents) from your desktop straight onto the canvas. Each asset appears as a draggable card; videos will play inline, images show thumbnails, and unknown types show their filenames.
-- Click **Add Text** to drop a note near the centre of your current view and reposition it like any other card.
-- Click a card to select it — the glowing border confirms it's active. Use the ✎ button or double-click the body to rename (the file extension is preserved automatically). Press ✕ or the <kbd>Delete</kbd> key to remove it from both the board and the server.
-- Drag the corner handle on any card to resize it. This is especially handy for mood boards or when you need a larger video viewport.
-- Hold <kbd>Space</kbd> and drag anywhere on the background to pan the infinite canvas, or use the zoom controls in the toolbar. **Reset view** snaps the board back to centre.
-- Multi-select right on the canvas: shift-click to add to a selection or drag a marquee box over several cards. The **Download selection** button uses the current highlighted assets — it streams a single file directly or builds a ZIP when multiple items are chosen.
+- Drag files (images, videos, or other documents) from your desktop or use the **Upload** button. Each asset appears as a draggable card; videos will play inline, images show thumbnails, and unknown types show their filenames.
+- Click the **Text Tool** button to add free-form notes that you can reposition like other cards.
+- Use the asset selector on the right to pick one or more stored assets. Clicking **Download Selected** will return the renamed file directly when a single asset is selected, or a ZIP archive when multiple assets are chosen.

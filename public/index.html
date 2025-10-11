@@ -18,19 +18,17 @@
         <span class="slider"></span>
         <span class="label">Rename on drop</span>
       </label>
-      <div class="nav-controls" role="group" aria-label="Canvas navigation">
-        <button id="zoomOut" class="icon-control" type="button" aria-label="Zoom out">−</button>
-        <span id="zoomDisplay" aria-live="polite">100%</span>
-        <button id="zoomIn" class="icon-control" type="button" aria-label="Zoom in">+</button>
-        <button id="resetView" class="action secondary" type="button">Reset view</button>
-      </div>
       <button id="addTextBtn" class="action">Add Text</button>
-      <button id="downloadSelected" class="action secondary">Download selection</button>
+      <div class="asset-selector">
+        <label for="assetSelect">Assets</label>
+        <select id="assetSelect" multiple></select>
+        <button id="downloadSelected" class="action">Download Selected</button>
+      </div>
     </div>
   </header>
   <main>
     <section id="dropInfo">
-      <p>Drag and drop images, videos, or other files anywhere onto the canvas. Hold <kbd>Space</kbd> and drag to pan, or use the zoom controls to explore the infinite grid.</p>
+      <p>Drag and drop images, videos, or other files anywhere onto the canvas.</p>
     </section>
     <section id="workspaceContainer">
       <div id="workspace"></div>
@@ -40,13 +38,8 @@
     <div class="asset" tabindex="0">
       <div class="asset-header">
         <span class="asset-title"></span>
-        <div class="asset-actions">
-          <button class="icon-control rename-btn" type="button" aria-label="Rename asset">✎</button>
-          <button class="icon-control delete-btn" type="button" aria-label="Remove asset">✕</button>
-        </div>
       </div>
       <div class="asset-body"></div>
-      <button class="resize-handle" type="button" aria-label="Resize asset"></button>
     </div>
   </template>
   <script src="app.js" type="module"></script>
